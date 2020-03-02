@@ -39,12 +39,12 @@ axios.interceptors.response.use(
 );
 
 export function signIn(loginData) {
-  return axios.post(`${process.env.REACT_APP_BACKEND_URL}api/auth`, loginData);
+  return axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth`, loginData);
 }
 
 export function signUp(registerData) {
   return axios.post(
-    `${process.env.REACT_APP_BACKEND_URL}api/accounts`,
+    `${process.env.REACT_APP_BACKEND_URL}/api/accounts`,
     registerData
   );
 }
