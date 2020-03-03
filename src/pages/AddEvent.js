@@ -44,10 +44,10 @@ export function AddEvent() {
   return (
     <React.Fragment>
       <header className="header-add-event">
-        <Link className="btn" to="/CalendarPrivate">
+        <Link className="btn-private" to="/CalendarPrivate">
           Calendar
         </Link>
-        <Link className="btn" to="/events_user">
+        <Link className="btn-private" to="/events_user">
           My events
         </Link>
         <Header />
