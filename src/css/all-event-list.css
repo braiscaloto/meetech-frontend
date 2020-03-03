@@ -1,0 +1,13 @@
+.all-event-list {
+  background: var(--medium);
+  padding: 50px;
+  margin-top: 25px;
+  margin-right: 200px;
+  margin-left: 200px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.all-event-list h3 {
+  color: var(--bright);
+}

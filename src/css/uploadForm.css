@@ -1,5 +1,5 @@
 .titleProfile {
-  color: white;
+  color: var(--medium);
   padding: 2rem;
   align-content: center;
 }
@@ -19,7 +19,7 @@
 }
 
 .file-upload-container.drag {
-  background-color: #ddd;
+  background-color: var(--medium);
 }
 
 .file-upload-container input[type="file"] {
@@ -28,7 +28,7 @@
 
 .file-upload-container button {
   background: #aaa;
-  color: #fff;
+  color: var(--medium);
   padding: 10px 20px;
   width: 20%;
   margin: 0 auto;

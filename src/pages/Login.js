@@ -35,10 +35,10 @@ export function Login() {
   return (
     <React.Fragment>
       <Link className="linkHome" to={"/"}>
-        access without signin
+        access without sign in
       </Link>
       <main className="centered-container">
-        <h3>SIGN IN TO MEETECH</h3>
+        <h3 className="title-login">SIGN IN TO MEETECH</h3>
 
         <form onSubmit={handleSubmit(handleLogin)} noValidate>
           <div

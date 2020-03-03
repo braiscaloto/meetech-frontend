@@ -9,7 +9,7 @@
 
 .titleProfile {
   text-align: center;
-  color: var(--brigth);
+  color: var(--medium);
 }
 .avatarContainer {
   padding: 30px;
@@ -41,11 +41,7 @@
   display: block;
   margin: auto;
 }
-.logoutLinkProfile {
-  align-items: center;
-  display: block;
-  margin: auto;
-}
+
 .homeLink {
   padding: 0.5rem;
 }
@@ -59,9 +55,9 @@
 .logoutButton {
   padding: 0.25rem;
   background-color: transparent;
+  color: var(--bright);
+  font-family: var(--font-primary);
   border: none;
-  color: white;
-  font-family: Righteous;
 }
 .contactProfile {
   padding: 1rem;

@@ -7,13 +7,14 @@
 
 .linkBack {
   border: none;
-  color: var(--bright);
-  font-size: 16px;
-  font: var(-font--primary);
+  border-collapse: unset;
+  width: fit-content;
+  color: var(--medium);
+  font-family: var(--font-primary);
 }
 .linkDelete {
   border: none;
-  color: var(--bright);
+  color: var(--medium);
   font-size: 16px;
   font: var(-font--primary);
 }

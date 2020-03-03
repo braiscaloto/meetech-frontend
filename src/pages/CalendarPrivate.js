@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from "react";
 import { getAllEvents } from "../http/eventsService";
 import { EventsCalendar } from "../components/EventsCalendar";
 import { useHistory, Link } from "react-router-dom";
+import { Header } from "../components/Header";
 
 function formatDate(date) {
   var d = new Date(date),
@@ -35,7 +36,6 @@ function eventsReducer(state, action) {
 export function CalendarPrivate() {
   const [state, dispatch] = useReducer(eventsReducer, {
     events: [],
-    selectedTag: null,
     selectedEvent: null
   });
 
@@ -51,21 +51,23 @@ export function CalendarPrivate() {
 
   return (
     <React.Fragment>
-      {" "}
-      <Link to="/">
-        <h1 className="logo-private">meetech</h1>
-      </Link>
-      <div className="header-calendar">
-        <Link className="btn-private" to={`/profile`}>
-          Profile
+      <header className="header-calendar">
+        <Link to="/">
+          <h1 className="logo-private">meetech</h1>
         </Link>
-        <Link className="btn-private" to={`/home`}>
-          Events
-        </Link>
-        <Link className="btn-private" to={`/add-event`}>
-          Add events
-        </Link>
-      </div>
+        <div className="items">
+          <Link className="btn-private" to={`/profile`}>
+            Profile
+          </Link>
+          <Link className="btn-private" to={`/home`}>
+            Events
+          </Link>
+          <Link className="btn-private" to={`/add-event`}>
+            Add events
+          </Link>
+          <Header />
+        </div>
+      </header>
       <article className="calendar">
         {state.events.length > 0 && (
           <EventsCalendar defaultEvents={state.events} />

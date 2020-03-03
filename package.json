@@ -1,10 +1,6 @@
 {
   "name": "meetups_calendar",
   "version": "0.1.0",
-  "engines": {
-    "npm": "6.12.1",
-    "node": "v12.13.1"
-  },
   "private": true,
   "dependencies": {
     "@fullcalendar/core": "^4.4.0",
@@ -16,6 +12,7 @@
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "fullcalendar": "^3.10.1",
+    "google-map-react": "^1.1.6",
     "jwt-decode": "^2.2.0",
     "lodash-es": "^4.17.15",
     "moment": "^2.24.0",
@@ -23,6 +20,7 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-hook-form": "^4.9.8",
+    "react-hook-google-maps": "0.0.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "recharts": "^2.0.0-beta.1"

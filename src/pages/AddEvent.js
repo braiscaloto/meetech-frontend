@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import { Header } from "../components/Header";
 import { addEvent } from "../http/eventsService";
 import { useAuth } from "../context/auth-context";
 
@@ -14,10 +15,10 @@ function eventsReducer(state, action) {
 }
 
 export function AddEvent() {
-  const { register, errors, formState, handleSubmit, setError } = useForm({
+  const { register, errors, formState, handleSubmit } = useForm({
     mode: "onBlur"
   });
-  const { currentUser, setCurrentUser, setIsAuthenticated } = useAuth();
+  const { currentUser } = useAuth();
   const history = useHistory();
 
   const [state, dispatch] = useReducer(eventsReducer, {
@@ -36,12 +37,21 @@ export function AddEvent() {
     };
     addEvent(dataEvent).then(response => {
       dispatch({ type: "CREATE_EVENT", event: dataEvent });
-      history.push("/");
+      history.push("/Calendarprivate");
     });
   };
 
   return (
-    <main className="mainAddEvent">
+    <React.Fragment>
+      <header className="header-add-event">
+        <Link className="btn" to="/CalendarPrivate">
+          Calendar
+        </Link>
+        <Link className="btn" to="/events_user">
+          My events
+        </Link>
+        <Header />
+      </header>
       <div className="formAddEvent">
         <form onSubmit={handleSubmit(handleCreateEvent)} noValidate>
           <label>Title</label>
@@ -149,6 +159,6 @@ export function AddEvent() {
           </div>
         </form>
       </div>
-    </main>
+    </React.Fragment>
   );
 }

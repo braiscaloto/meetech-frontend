@@ -1,13 +1,13 @@
-import axios from 'axios';
+import axios from "axios";
 
-const storedUser = JSON.parse(localStorage.getItem('currentUser'));
+const storedUser = JSON.parse(localStorage.getItem("currentUser"));
 
 let accessToken = (storedUser && storedUser.accessToken) || null;
 
 axios.interceptors.request.use(
   function(config) {
     if (accessToken) {
-      config.headers['Authorization'] = `Bearer ${accessToken}`;
+      config.headers["Authorization"] = `Bearer ${accessToken}`;
     }
     return config;
   },
@@ -19,7 +19,7 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   function(response) {
     if (response.data.accessToken) {
-      localStorage.setItem('currentUser', JSON.stringify(response.data));
+      localStorage.setItem("currentUser", JSON.stringify(response.data));
       accessToken = response.data.accessToken;
     }
     return response;
@@ -28,11 +28,11 @@ axios.interceptors.response.use(
     if (
       error.response &&
       error.response.status === 401 &&
-      !error.config.url.includes('/login')
+      !error.config.url.includes("/login")
     ) {
-      localStorage.removeItem('currentUser');
+      localStorage.removeItem("currentUser");
 
-      window.location.href = '/login';
+      window.location.href = "/login";
     }
     return Promise.reject(error);
   }

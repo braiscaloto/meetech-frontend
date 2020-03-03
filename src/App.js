@@ -6,7 +6,6 @@ import { Register } from "./pages/Register";
 import { AuthProvider } from "./context/auth-context";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { AddEvent } from "./pages/AddEvent";
-import { Cards } from "./pages/Cards";
 import { GetEvent } from "./pages/GetEvent";
 import { Calendar } from "./pages/Calendar";
 import { CalendarPrivate } from "./pages/CalendarPrivate";
@@ -14,6 +13,7 @@ import { Profile } from "./pages/Profile";
 import { UserUpdate } from "./pages/UserUpdate";
 import { DeleteAccount } from "./pages/Delete";
 import { Headboard } from "./pages/Headboard";
+import { EventsUser } from "./pages/EventsUser";
 
 function App() {
   return (
@@ -32,9 +32,9 @@ function App() {
           <PrivateRoute path="/calendarPrivate">
             <CalendarPrivate />
           </PrivateRoute>
-          <Route path="/cards">
-            <Cards />
-          </Route>
+          <PrivateRoute path="/events_user">
+            <EventsUser />
+          </PrivateRoute>
           <Route path="/login">
             <Login />
           </Route>

@@ -1,31 +1,30 @@
 .btn {
   font-family: var(--font-primary);
   transition: all 0.2s;
-  min-width: 120px;
   padding: 10px 20px;
   font-size: 1rem;
-  background: transparent;
-  text-transform: uppercase;
+  background: var(--medium);
   color: var(--bright);
   outline: none;
   cursor: pointer;
   height: 50px;
   border-radius: 30px;
   border: 2px solid;
+  text-align: center;
 }
 
 .btn-private {
   font-family: var(--font-primary);
+  text-align: center;
   transition: all 0.2s;
-  min-width: 120px;
   padding: 10px 20px;
   font-size: 1rem;
-  background: transparent;
-  text-transform: uppercase;
+  text-transform: lowercase;
   color: var(--bright);
+  background: var(--medium);
   outline: none;
   cursor: pointer;
-  height: 50px;
+  height: 20px;
   border-radius: 30px;
   border: 2px solid;
   float: right;
@@ -36,7 +35,6 @@
   font-family: var(--font-primary);
   font-size: 1.5rem;
   background: transparent;
-  color: var(--bright);
   width: fit-content;
   cursor: pointer;
   border: none;
@@ -47,20 +45,19 @@
 .btn-header {
   border: none;
   font-size: 1rem;
-  color: white;
+  font-family: var(--font-primary);
+  color: var(--medium);
   padding: 1rem;
 }
 
 .btn:hover {
-  background: var(--bright);
-  color: var(--secondary);
-  border: 2px solid var(--secondary);
+  color: var(--medium);
+  border: 2px solid var(--medium);
   font-weight: bold;
 }
 
 .btn.bright {
-  background-color: var(--bright);
-  color: var(--dark);
+  color: var(--medium);
 }
 
 .btn.error {
@@ -73,11 +70,27 @@
 
 .btn[disabled] {
   opacity: 0.5;
-  background: var(--secondary);
+  background: var(--medium);
   color: var(--bright);
   font-size: 1rem !important;
   transition: none;
   font-weight: normal;
   outline: none;
   border: none;
+}
+.btn-event-user {
+  font-family: var(--font-primary);
+  transition: all 0.2s;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: var(--medium);
+  color: var(--bright);
+  outline: none;
+  cursor: pointer;
+  height: 20px;
+  border-radius: 30px;
+  border: 2px solid;
+  margin-left: 20px;
+  margin-right: 50px;
+  margin-bottom: 30px;
 }

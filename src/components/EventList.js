@@ -1,5 +1,5 @@
-import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useHistory, Link } from "react-router-dom";
 
 export function EventList({
   events,
@@ -7,38 +7,41 @@ export function EventList({
   onSelectEvent,
   onSelectDate
 }) {
-  console.log(onSelectDate);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const handleChange = e => {
+    setSearchTerm(e.target.value);
+  };
+  useEffect(() => {
+    const results = events.filter(event =>
+      event.title.toLowerCase().includes(searchTerm)
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
 
   return (
-    <div className='opacity-container '>
-      <ul className='m-t-lg'>
-        {events.map((event, index) => (
-          <li key={event.id}>
-            <Link to={`/events/${event.id}`} className='link'>
-              View more..
-            </Link>
-            <div
-              onClick={() => onSelectEvent(index)}
-              className={`event-item ${selectedIndex === index && 'selected'}`}
-            >
-              <div className='container'>
-                <div style={{ minWidth: '35px' }}>
-                  <span className='date'>{onSelectDate}</span>
-                </div>
-
-                <div className='overflow-hidden'>
-                  <h5 className='truncate-text title'>
-                    {event.title || 'Untitled Event'}
-                  </h5>
-                  <p className='truncate-multiline-text description'>
-                    {event.content || 'No content'}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <React.Fragment>
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={handleChange}
+      />
+      <div>
+        <ul>
+          {searchResults.map((event, index) => (
+            <li key={event.id} className="event-list-user">
+              <Link to={`/events/${event.id}`} className="btn-event-user">
+                View more..
+              </Link>
+              <article>
+                <h3>{event.title || "Untitled Event"}</h3>
+                <p>{event.content || "No content"}</p>
+              </article>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </React.Fragment>
   );
 }

@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer } from "react";
-
 import { getAllEvents } from "../http/eventsService";
 import { EventsCalendar } from "../components/EventsCalendar";
 import { useHistory, Link } from "react-router-dom";
@@ -36,7 +35,6 @@ function eventsReducer(state, action) {
 export function Calendar() {
   const [state, dispatch] = useReducer(eventsReducer, {
     events: [],
-    selectedTag: null,
     selectedEvent: null
   });
 
@@ -52,28 +50,30 @@ export function Calendar() {
 
   return (
     <React.Fragment>
-      <header>
-        <article className="header-calendar1">
-          <Link to="/">
-            <h1 className="logo-calendar">meetech</h1>
-          </Link>
-        </article>
-        <div className="header-calendar2">
-          <Link to="/register" className="btn">
-            Sign Up
-          </Link>
-          <Link to="/login" className="btn">
-            Sign In
-          </Link>
-        </div>
-      </header>
-      <main>
-        <article className="calendar">
-          {state.events.length > 0 && (
-            <EventsCalendar defaultEvents={state.events} />
-          )}
-        </article>
-      </main>
+      <div>
+        <header className="header-calendar">
+          <div>
+            <Link to="/">
+              <h1 className="logo-calendar">meetech</h1>
+            </Link>
+          </div>
+          <div>
+            <Link to="/register" className="btn">
+              Sign Up
+            </Link>
+            <Link to="/login" className="btn">
+              Sign In
+            </Link>
+          </div>
+        </header>
+        <main>
+          <article className="calendar">
+            {state.events.length > 0 && (
+              <EventsCalendar defaultEvents={state.events} />
+            )}
+          </article>
+        </main>
+      </div>
     </React.Fragment>
   );
 }

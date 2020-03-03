@@ -1,48 +1,74 @@
 import React, { useState, useEffect } from "react";
-import { TagsInput } from "./TagsInput";
 import { useHistory } from "react-router";
+import { MiniAvatarContainer } from "./MiniAvatarContainer";
 
+function formatDate(date) {
+  var d = new Date(date),
+    month = "" + (d.getMonth() + 1),
+    day = "" + d.getDate(),
+    year = d.getFullYear();
+
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  return [year, month, day].join("-");
+}
+function formatTime(string) {
+  const time = new Date(string);
+  const hour = "Hora: " + time.getHours() + "  " + time.getMinutes();
+  return hour;
+}
 export function Event({
   defaultEvent = {},
   defaultAttendees = {},
   defaultLikes = {},
   defaultComments = {}
 }) {
+  const [comments] = defaultComments;
   const history = useHistory();
 
-  console.log(defaultComments);
+  const date = formatDate(defaultEvent.event_at);
+  const time = formatTime(defaultEvent.event_at);
 
   return (
-    <main>
+    <React.Fragment>
       <div className="event">
-        <h1 id="title" className="titleComment">
-          {defaultEvent.title}
-        </h1>
-        <p id="event_time"></p>
-        <p id="content" className="content">
-          {defaultEvent.content}
-        </p>
-
-        <article>
-          <h2>Comments...</h2>
-          <ul>
-            {defaultComments.map(comment => (
-              <li key={comment.comment}>
-                <p id="content">{comment.comment}</p>
-              </li>
-            ))}
-          </ul>
-        </article>
-        <article>
-          <ul>
-            {defaultAttendees.map(attendee => (
-              <li key={attendee.id}>
-                <h3 id="content">{attendee.name}</h3>
-              </li>
-            ))}
-          </ul>
-        </article>
+        <div className="event-information">
+          <h1>{defaultEvent.title}</h1>
+          <h2>
+            {date}
+            {time}
+          </h2>
+        </div>
+        <div className="content-event-container">
+          <p id="content" className="content">
+            {defaultEvent.content}
+          </p>
+        </div>
+        <div className="style-event">
+          <div className="comments-event-container">
+            <h3>Comments...</h3>
+            <ul>
+              {defaultComments.map(comment => (
+                <li key={comment.comment}>
+                  <p id="content">{comment.comment}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="attendees-event-container">
+            <ul>
+              <h3>Attendees...</h3>
+              {defaultAttendees.map(attendee => (
+                <li className="attendees-list" key={attendee.id}>
+                  <MiniAvatarContainer src={attendee.avatar_url} />
+                  <h3 id="content">{attendee.name}</h3>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
-    </main>
+    </React.Fragment>
   );
 }

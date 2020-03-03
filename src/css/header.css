@@ -3,19 +3,17 @@
 }
 
 .headerAvatar {
-  border-radius: 3rem;
-
+  border-radius: 8rem;
   max-height: 50px;
   max-width: 50px;
 }
 .header {
   display: flex;
-  align-items: center;
-  padding: var(--space-md);
+  padding: 5px;
 }
 
 .header h1 {
-  font-family: var(--font-special);
+  font-family: var(--font-primary);
   font-size: var(--font-l);
 }
 
@@ -45,4 +43,28 @@
 #tags-toggle {
   border-bottom: none;
 }
+.items {
+  display: flex;
+}
+.header-calendar-events {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
 
+.title-events-user {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.header-event {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-add-event {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+}

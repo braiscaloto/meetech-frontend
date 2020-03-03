@@ -1,10 +1,15 @@
 import React, { useEffect, useReducer } from "react";
 import { useHistory, Link } from "react-router-dom";
-import { getEvents, updateEvent, deleteEvent } from "../http/eventsService";
+import {
+  getEvents,
+  updateEvent,
+  deleteEvent,
+  getUserEvents
+} from "../http/eventsService";
 import { useMatchMedia } from "../hooks/useMatchMedia";
 import { Header } from "../components/Header";
 import { useAuth } from "../context/auth-context";
-import { EventList } from "../components/EventList";
+import { AllEventsList } from "../components/AllEventsList";
 import { Event } from "../components/Event";
 import { Charts } from "../components/Charts";
 
@@ -15,22 +20,11 @@ function eventsReducer(state, action) {
         ...state,
         events: action.initialEvents
       };
-    case "SAVE_EVENT":
+    case "GET_USER_EVENTS":
       return {
         ...state,
-        events: state.events.map(n => {
-          if (n.id === action.event.id) {
-            return action.event;
-          }
-          return n;
-        })
+        userEvents: action.userEvents
       };
-    case "DELETE_EVENT":
-      return { ...state, events: state.events.filter(n => n.id !== action.id) };
-    case "SELECT_EVENT":
-      return { ...state, selectedEvent: action.index };
-    case "SEARCH_TEXT_CHANGED":
-      return { ...state, searchText: action.text };
     case "TOGGLE_EVENT":
       return {
         ...state,
@@ -51,11 +45,11 @@ function eventsReducer(state, action) {
 export function Dashboard() {
   const isMobile = useMatchMedia("(max-width:576px)");
   const history = useHistory();
-  const { currentUser } = useAuth();
+  const { currentUser, setCurrentUser, setIsAuthenticated } = useAuth();
 
   const [state, dispatch] = useReducer(eventsReducer, {
     events: [],
-    selectedTag: null,
+    userEvents: [],
     selectedEvent: null,
     isMenuOpened: false,
     isEventOpened: false,
@@ -69,6 +63,13 @@ export function Dashboard() {
         initialEvents: response.data.data
       })
     );
+    // getUserEvents(state.events.id).then(response => {
+    //   console.log(response);
+    //   dispatch({
+    //     type: "GET_USER_EVENTS",
+    //     userEvents: response.data
+    //   });
+    // });
   }, []);
 
   const filteredEvents = state.events.filter(event => {
@@ -80,63 +81,35 @@ export function Dashboard() {
     return filterText;
   });
 
-  const handleSaveEvent = event => {
-    updateEvent(event).then(response => {
-      dispatch({ type: "SAVE_EVENT", event: response.data });
-    });
-  };
-
-  const handleDeleteEvent = id => {
-    deleteEvent(id).then(() => {
-      dispatch({ type: "DELETE_EVENT", id });
-    });
-  };
   if (state.events.length === 0) return null;
   const eventId = state.events[0].id;
   return (
     <React.Fragment>
-      <Header
-        title=""
-        user={currentUser.user}
-        onMenuOpenedChange={() => dispatch({ type: "TOGGLE_MENU" })}
-        onLogout={e => {
-          localStorage.removeItem("currentUser");
-          window.location.href = "/login";
-        }}
-      />
-      <nav>
-        <Link className="btn" to="/profile">
-          Profile
-        </Link>
-        <Link className="btn" to="/">
-          Calendar
-        </Link>
-      </nav>
+      <header className="header-calendar-events">
+        <h1 className="logo-private">meetech</h1>
+        <div className="items">
+          <Link className="btn-private" to="/CalendarPrivate">
+            calendar
+          </Link>
+          <Link className="btn-private" to="/events_user">
+            my events
+          </Link>
+          <Header />
+        </div>
+      </header>
+
       <main id="dashboard">
-        <div
-          className={`grid ${state.isMenuOpened &&
-            "menu-opened"} ${state.isEventOpened && "events-opened"}`}
-        >
-          <div className="event-list">
-            <EventList
+        <div>
+          <div>
+            <AllEventsList
               events={filteredEvents}
-              selectedIndex={state.selectedEvent}
-              onSelectEvent={index => {
-                dispatch({ type: "SELECT_EVENT", index });
-                dispatch({ type: "TOGGLE_EVENT" });
-              }}
+              userEvents={state.userEvents}
             />
           </div>
           {state.selectedEvent === null && (
             <h3 className="no-event-selected"></h3>
           )}
-          {/* {state.selectedEvent !== null && (
-            <Event
-              defaultEvent={filteredEvents[state.selectedEvent]}
-              onSaveEvent={event => handleSaveEvent(event)}
-              onDeleteEvent={id => handleDeleteEvent(id)}
-            />
-          )} */}
+
           {state.selectedEvent !== null && <Charts />}
         </div>
 

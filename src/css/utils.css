@@ -21,8 +21,8 @@
 
 .m-t-lg {
   margin-top: var(--space-lg);
-  color: var(--bright);
-  border-color: var(--bright);
+  color: var(--medium);
+  border-color: var(--medium);
 }
 
 .flex {
@@ -47,13 +47,16 @@
 }
 .linkCreateAccount {
   margin-top: 1rem;
-  color: white;
+  color: var(--medium);
   border: none;
   font-size: 16px;
 }
 .linkHome {
   margin-top: 1rem;
-  color: white;
-  border: none;
+  color: var(--medium);
+  width: fit-content;
   font-size: 16px;
+  border: none;
+  border-collapse: unset;
+  margin-left: 20px;
 }

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export function deleteAccount() {
   return axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/accounts`);

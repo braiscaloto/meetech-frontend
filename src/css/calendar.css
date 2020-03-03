@@ -1,24 +1,27 @@
-@import url("https://fonts.googleapis.com/css?family=Righteous&display=swap");
 @import "~@fullcalendar/core/main.css";
 @import "~@fullcalendar/daygrid/main.css";
 .fc-unthemed td.fc-today {
-  opacity: 0.1 !important;
+  background: var(--secondary);
+  opacity: 0.2 !important;
 }
 .fc-event {
-  background: var(--primary) !important;
-  font-size: 1em !important;
+  background: var(--medium) !important;
+  font-family: var(--font-primary) !important;
   line-height: 2 !important;
   border-radius: 30px !important;
-  border: 1px solid var(--primary) !important;
+  border: 1px solid var(--medium) !important;
+}
+.fc-head {
+  border-color: black;
+  background: var(--secondary);
 }
 .fc {
   direction: ltr !important;
   text-align: center !important;
+  color: var(--medium) !important;
+  font-family: var(--font-primary) !important;
 }
-.fc-button-primary:disabled {
-  background-color: transparent !important;
-  border-color: transparent !important;
-}
+
 .nav {
   width: 30px;
   height: 30px;
@@ -31,21 +34,19 @@
 }
 
 .header-calendar1 {
+  margin-left: 20px;
   display: flex;
-  justify-content: flex-start;
-}
-.header-calendar2 {
-  display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
-.logo-private {
-  padding: 20px 0 0 30px;
-}
 .logo-calendar h1 {
   font-family: var(--font-primary);
-  color: var(--primary);
   border: none;
-  font-family: var(--font-primary);
-  color: var(--primary);
+  border-collapse: unset;
+  width: fit-content;
+}
+.header-calendar {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
 }

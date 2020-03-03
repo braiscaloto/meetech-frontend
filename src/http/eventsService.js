@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export function getAllEvents() {
   return axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/allevents`);
@@ -6,6 +6,16 @@ export function getAllEvents() {
 
 export function getEvents() {
   return axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/events`);
+}
+
+export function getEventsUser() {
+  return axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/eventsuser`);
+}
+
+export function getUserEvents(event_id) {
+  return axios.get(
+    `${process.env.REACT_APP_BACKEND_URL}/api/userevent/${event_id}`
+  );
 }
 
 export function getEvent(event_id) {

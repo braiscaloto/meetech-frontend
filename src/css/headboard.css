@@ -1,56 +1,36 @@
-@import url("https://fonts.googleapis.com/css?family=Righteous&display=swap");
-
-video {
-  object-fit: cover;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-.viewport-header {
-  position: relative;
-  padding: 2rem;
-  height: 100vh;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 36px;
-  color: #fc8b1be3;
-}
-.video-header {
-  position: absolute;
-  text-align: center;
-  width: 100vw;
-  height: 100vh;
-}
-.video-header,
-.video-header video,
-.video-header .viewport-header {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.video-header video {
-  background: brown;
-  object-fit: cover;
-}
-.video-header .viewport-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 1;
-  opacity: var(--headerOpacity);
-  transform: scale(var(--headerScale));
+p {
+  font-family: var(--font-primary);
 }
 
-h1 span {
+a:hover {
+  opacity: 0.6;
+}
+.hero {
+  background: url("../images/baner.jpeg") no-repeat center fixed;
+  background-size: cover;
+  padding: 13rem 2rem;
+}
+
+.hero > * {
+  color: var(--medium);
+}
+
+.hero > h1 {
+  font-size: 4rem;
+  padding-bottom: 1rem;
+}
+
+.hero > article > p {
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+
+.hero > article > a {
+  padding: 1rem;
+  margin-top: 0.75rem;
+}
+
+.header-headboard {
   display: flex;
-  align-items: center;
-  font-size: 10vw;
-  margin-top: 5px;
+  justify-content: space-between;
 }
