@@ -8,19 +8,23 @@ a:hover {
 .hero {
   background: url("../images/baner.jpeg") no-repeat center fixed;
   background-size: cover;
-  padding: 13rem 2rem;
+  padding: 15rem 2rem;
+  -webkit-box-shadow: -3px -4px 13px 36px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: -3px -4px 13px 36px rgba(0, 0, 0, 0.49);
+  box-shadow: -3px -4px 13px 36px rgba(0, 0, 0, 0.49);
 }
 
 .hero > * {
-  color: var(--medium);
+  color: var(--bright);
 }
 
 .hero > h1 {
   font-size: 4rem;
-  padding-bottom: 1rem;
+  padding-top: 5rem;
 }
 
 .hero > article > p {
+  margin-top: 30px;
   font-size: 1.5rem;
   font-weight: 200;
 }
