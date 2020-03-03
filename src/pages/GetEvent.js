@@ -119,14 +119,13 @@ export function GetEvent() {
         </Link>
         <Header />
       </header>
-      {state.comments.length > 0 && (
-        <Event
-          defaultEvent={state.event}
-          defaultAttendees={state.attendees}
-          defaultLikes={state.likes}
-          defaultComments={state.comments}
-        />
-      )}
+
+      <Event
+        defaultEvent={state.event}
+        defaultAttendees={state.attendees}
+        defaultLikes={state.likes}
+        defaultComments={state.comments}
+      />
 
       <AddComment />
       <button
