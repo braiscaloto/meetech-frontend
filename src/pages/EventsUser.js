@@ -89,6 +89,7 @@ export function EventsUser() {
     deleteEvent(id).then(() => {
       dispatch({ type: "DELETE_EVENT", id });
     });
+    window.location.reload();
   };
   if (state.events.length === 0) return null;
   const eventId = state.events[0].id;
@@ -121,31 +122,10 @@ export function EventsUser() {
                 dispatch({ type: "SELECT_EVENT", index });
                 dispatch({ type: "TOGGLE_EVENT" });
               }}
-            />
-          </div>
-          {state.selectedEvent === null && (
-            <h3 className="no-event-selected"></h3>
-          )}
-          {/* {state.selectedEvent !== null && (
-            <Event
-              defaultEvent={filteredEvents[state.selectedEvent]}
-              onSaveEvent={event => handleSaveEvent(event)}
               onDeleteEvent={id => handleDeleteEvent(id)}
             />
-          )} */}
-          {state.selectedEvent !== null && <Charts />}
+          </div>
         </div>
-
-        {isMobile && state.selectedEvent !== null && (
-          <button
-            onClick={() => {
-              dispatch({ type: "TOGGLE_EVENT" });
-              dispatch({ type: "SELECT_EVENT", index: null });
-            }}
-            className="icon-button add-event-mobile"
-            style={{ position: "fixed", bottom: "20px", left: "20px" }}
-          />
-        )}
       </main>
     </React.Fragment>
   );
