@@ -15,15 +15,16 @@ function formatDate(date) {
 }
 function formatTime(string) {
   const time = new Date(string);
-  const hour = "Hora: " + time.getHours() + "  " + time.getMinutes();
+  const hour = "Hora: " + time.getHours() + " " + time.getMinutes();
   return hour;
 }
 export function Event({
   defaultEvent = {},
   defaultAttendees = {},
   defaultLikes = {},
-  defaultComments = {}
+  defaultComments = []
 }) {
+  console.log(defaultComments);
   const [comments] = defaultComments;
   const history = useHistory();
 

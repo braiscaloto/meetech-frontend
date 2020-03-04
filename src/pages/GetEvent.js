@@ -2,17 +2,18 @@ import React, { useState, useReducer, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, Link } from "react-router-dom";
 import {
-  addLike,
+  addComment,
   getComments,
   getEvent,
   getAttendees,
+  addLike,
   getLikes,
-  deleteLike
+  deleteLike,
+  addAttendee
 } from "../http/eventsService";
 import { useAuth } from "../context/auth-context";
 import { Event } from "../components/Event";
 import { Header } from "../components/Header";
-import { AddComment } from "./AddComments";
 
 function eventReducer(state, action) {
   switch (action.type) {
@@ -37,15 +38,17 @@ function eventReducer(state, action) {
         comments: action.initialComments
       };
     case "CREATE_COMMENT":
-      return { ...state, comments: { ...state.comment, ...action.comments } };
+      return { ...state, comments: [...state.comments, ...action.comment] };
     case "CREATE_ATTENDEE":
       return { ...state, attendee: { ...state.attendee, ...action.attendees } };
+    case "CREATE_LIKE":
+      return { ...state, likes: { ...state.like, ...action.likes } };
+
     case "DELETE_LIKE":
       return {
         ...state,
         likes: { ...state }
       };
-
     default:
       return state;
   }
@@ -61,7 +64,8 @@ export function GetEvent() {
   const [state, dispatch] = useReducer(eventReducer, {
     attendees: [],
     comments: [],
-    event: []
+    event: [],
+    likes: []
   });
 
   const urlParts = window.location.href.split("/");
@@ -75,6 +79,7 @@ export function GetEvent() {
       })
     );
     getLikes(eventId).then(response => {
+      console.log(response);
       dispatch({
         type: "GET_LIKES_EVENTS",
         initialLikes: response.data
@@ -87,15 +92,43 @@ export function GetEvent() {
       })
     );
     getComments(eventId).then(response => {
+      console.log(response);
       dispatch({
         type: "GET_COMMENTS_EVENTS",
         initialComments: response.data
       });
     });
   }, []);
-  const handleCreateLike = () => {
+
+  const handleCreateComment = formData => {
+    const dataComment = {
+      comment: formData.comment
+    };
+
+    addComment(eventId, dataComment).then(response => {
+      dispatch({ type: "CREATE_COMMENT", comment: dataComment });
+    });
     window.location.reload();
-    addLike(eventId).then(response => {});
+  };
+  const handleCreateLike = data => {
+    const dataLike = {
+      ...data
+    };
+
+    addLike(eventId, dataLike).then(response => {
+      dispatch({ type: "CREATE_LIKE", like: dataLike });
+      window.location.reload();
+    });
+  };
+
+  const handleCreateAttendee = data => {
+    const dataAttendee = {
+      ...data
+    };
+    addAttendee(eventId, data).then(response => {
+      dispatch({ type: "CREATE_ATTENDEE", attendee: dataAttendee });
+      window.location.reload();
+    });
   };
 
   const handleDeleteLike = data => {
@@ -104,7 +137,9 @@ export function GetEvent() {
     };
 
     deleteLike(eventId, dataLike).then(response => {
+      console.log(response);
       dispatch({ type: "DELETE_LIKE", currentUser });
+      history.push(`/events/${eventId}`);
     });
   };
 
@@ -119,26 +154,65 @@ export function GetEvent() {
         </Link>
         <Header />
       </header>
-
       <Event
         defaultEvent={state.event}
         defaultAttendees={state.attendees}
         defaultLikes={state.likes}
         defaultComments={state.comments}
       />
+      <div className="style-event-form">
+        <form onSubmit={handleSubmit(handleCreateComment)} noValidate>
+          <div
+            className={`form-control ${
+              errors.name ? "ko" : formState.touched.name && "ok"
+            }`}
+          >
+            <label>Comment</label>
+            <input
+              ref={register({
+                required: "The content is mandatory"
+              })}
+              id="comment"
+              name="comment"
+              type="text"
+              placeholder="Please enter your comment"
+            ></input>
+            {errors.title && (
+              <span className="errorMessage">{errors.title.message}</span>
+            )}
+          </div>
 
-      <AddComment />
-      <button
-        className="btn-like"
-        onClick={() => {
-          handleCreateLike();
-        }}
-        onDoubleClick={() => {
-          handleDeleteLike(currentUser);
-        }}
-      >
-        ❤️ {state.likes}
-      </button>
+          <div className="btn-container">
+            <button
+              type="submit"
+              className="btn"
+              disabled={formState.isSubmitting}
+            >
+              COMMENT
+            </button>
+          </div>
+        </form>
+
+        <button
+          className="btn"
+          onClick={() => {
+            handleCreateAttendee(currentUser);
+          }}
+        >
+          subscribe this event!!!
+        </button>
+        <button
+          className="btn-like"
+          onClick={() => {
+            handleCreateLike();
+          }}
+          onDoubleClick={() => {
+            handleDeleteLike(currentUser);
+          }}
+        >
+          ❤️ {state.likes}
+        </button>
+      </div>
     </React.Fragment>
   );
 }

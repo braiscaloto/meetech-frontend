@@ -52,9 +52,9 @@ export function Headboard() {
             </Link>
           </div>
         </header>
-        {state.events.length > 0 && (
+        {/* {state.events.length > 0 && (
           <EventsCards defaultEvents={state.events} />
-        )}
+        )} */}
       </div>
     </React.Fragment>
   );
