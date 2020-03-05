@@ -50,3 +50,35 @@
   display: flex;
   justify-content: space-between;
 }
+.super-responsive {
+  display: flex;
+  flex-flow: row wrap;
+}
+@media (max-width: 600px) {
+  .responsive-btn {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-left: 5px;
+  }
+
+  .responsive-btn1 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+  }
+
+  .header-calendar1 {
+    margin-left: 20px;
+  }
+
+  .logo-calendar h1 {
+    font-family: var(--font-primary);
+    border: none;
+    border-collapse: unset;
+    width: fit-content;
+  }
+
+  .header-calendar {
+    padding: 20px;
+  }
+}

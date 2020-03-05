@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export function EventsCards(defaultEvents = {}) {
   console.log(defaultEvents);
@@ -81,7 +82,7 @@ export function EventsCards(defaultEvents = {}) {
             <div class="circle">
               <img
                 className="card-avatar"
-                src={require("../images/sandra.jpeg")}
+                src={require("../images/juan.jpg")}
               />
             </div>
           </div>
@@ -94,7 +95,7 @@ export function EventsCards(defaultEvents = {}) {
             <div class="circle">
               <img
                 className="card-avatar"
-                src={require("../images/juan.jpg")}
+                src={require("../images/sandra.jpeg")}
               />
             </div>
           </div>

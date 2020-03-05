@@ -55,17 +55,22 @@ export function CalendarPrivate() {
         <Link to="/">
           <h1 className="logo-private">meetech</h1>
         </Link>
+
         <div className="items">
-          <Link className="btn-private" to={`/profile`}>
-            Profile
-          </Link>
-          <Link className="btn-private" to={`/home`}>
-            Events
-          </Link>
-          <Link className="btn-private" to={`/add-event`}>
-            Add events
-          </Link>
-          <Header />
+          <div className="responsive-btn">
+            <Link className="btn-private" to={`/profile`}>
+              Profile
+            </Link>
+            <Link className="btn-private" to={`/home`}>
+              Events
+            </Link>
+          </div>
+          <div className="super-responsive">
+            <Link className="btn-private" to={`/add-event`}>
+              Add events
+            </Link>
+            <Header />
+          </div>
         </div>
       </header>
       <article className="calendar">
