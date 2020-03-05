@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
-import { deleteEvent } from "../http/eventsService";
 
 export function EventList({ events, onDeleteEvent }) {
   const [searchTerm, setSearchTerm] = useState("");

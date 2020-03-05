@@ -158,6 +158,7 @@ export function GetEvent() {
         defaultLikes={state.likes}
         defaultComments={state.comments}
       />
+
       <div className="style-event-form">
         <form onSubmit={handleSubmit(handleCreateComment)} noValidate>
           <div
@@ -190,15 +191,6 @@ export function GetEvent() {
             </button>
           </div>
         </form>
-
-        <button
-          className="btn"
-          onClick={() => {
-            handleCreateAttendee(currentUser);
-          }}
-        >
-          subscribe this event!!!
-        </button>
         <button
           className="btn-like"
           onClick={() => {
@@ -209,6 +201,14 @@ export function GetEvent() {
           }}
         >
           ❤️ {state.likes}
+        </button>
+        <button
+          className="btn"
+          onClick={() => {
+            handleCreateAttendee(currentUser);
+          }}
+        >
+          subscribe this event!!!
         </button>
       </div>
     </React.Fragment>
