@@ -21,6 +21,7 @@
   transition: 0.4s ease-out;
   position: relative;
   left: 0px;
+  cursor: pointer;
 }
 
 .card:not(:first-child) {
@@ -75,11 +76,24 @@
   transition: 0.4s ease-out;
 }
 
+.circle {
+  position: absolute;
+  top: 150px;
+  left: calc(50% - 60px);
+}
+
 .stroke {
   stroke: white;
   stroke-dasharray: 360;
   stroke-dashoffset: 360;
   transition: 0.6s ease-out;
+}
+
+.card-avatar {
+  border-radius: 8rem;
+  max-height: 100px;
+  max-width: 100px;
+  margin-left: 0.8rem;
 }
 
 .card:hover .stroke {

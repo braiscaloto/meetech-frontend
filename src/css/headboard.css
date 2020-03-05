@@ -38,3 +38,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
 }
+.title-headboard {
+  margin-top: 5rem;
+  margin-left: 5rem;
+}

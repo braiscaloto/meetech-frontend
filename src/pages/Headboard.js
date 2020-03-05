@@ -52,9 +52,10 @@ export function Headboard() {
             </Link>
           </div>
         </header>
-        {/* {state.events.length > 0 && (
+        <h3 className="title-headboard">Upcoming events</h3>
+        {state.events.length > 0 && (
           <EventsCards defaultEvents={state.events} />
-        )} */}
+        )}
       </div>
     </React.Fragment>
   );
