@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  background-image: url('../images/pngocean.com.png');
 }
 
 .linkBack {
@@ -17,13 +18,19 @@
   color: var(--medium);
   font-size: 16px;
   font: var(-font--primary);
+  padding: 2rem;
+  text-align: center;
+  text-decoration: underline;
+}
+.labelPassword {
+  padding: 0.6rem;
 }
 
-.titleAvatar {
+.titleEditAvatar {
+  text-align: center;
   padding: 1rem;
 }
 .uploadAvatarForm {
-  margin-top: 2rem;
   text-align: center;
 }
 .formEditAccount {
@@ -47,12 +54,20 @@
   align-items: center;
   align-content: center;
 }
+.avatar-input {
+  max-width: 280px;
+}
+.button-avatar-update {
+  padding: 5px;
+  border-radius: 1rem;
+}
 .button-upload {
   margin-left: 0.5rem;
-  padding: 5px;
+  padding: 10px;
 }
 .updateButton {
   padding: 5px;
+  border-radius: 1rem;
 }
 
 .restartTitle {
@@ -61,4 +76,16 @@
 }
 .pRestartSession {
   margin: 10px;
+  color: var(--medium);
+}
+.titleDeleteAccount {
+  text-align: center;
+}
+.typeDelete {
+  text-align: center;
+  width: 100%;
+}
+.deletePage {
+  width: 100%;
+  background-image: url('../images/pngocean.com.png');
 }

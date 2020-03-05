@@ -2,15 +2,18 @@
   display: block;
   flex-direction: column;
   position: relative;
-  max-height: 100vh;
+  height: 100%;
   text-align: center;
   padding: 2rem;
+  background: rgb(192, 194, 205);
+  background: radial-gradient(
+    circle,
+    rgba(192, 194, 205, 0.6516981792717087) 100%,
+    rgba(203, 203, 203, 1) 100%
+  );
+  background-image: url('../images/pngocean.com.png');
 }
 
-.titleProfile {
-  text-align: center;
-  color: var(--medium);
-}
 .avatarContainer {
   padding: 30px;
   align-items: center;
@@ -18,7 +21,7 @@
   margin: auto;
 }
 .avatarProfile {
-  border-radius: 8rem;
+  border-radius: 7rem;
   max-height: 200px;
   max-width: 200px;
   min-height: 200px;
@@ -34,6 +37,7 @@
   text-align: center;
   font-size: 1rem;
   padding: 1rem;
+  color: var(--medium);
 }
 .updateProfile {
   align-items: center;

@@ -1,12 +1,12 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { Link, useHistory } from "react-router-dom";
-import { signUp } from "../http/authService";
-import { useAuth } from "../context/auth-context";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useHistory } from 'react-router-dom';
+import { signUp } from '../http/authService';
+import { useAuth } from '../context/auth-context';
 
 export function Register() {
   const { register, errors, formState, handleSubmit } = useForm({
-    mode: "onBlur"
+    mode: 'onBlur'
   });
   const { setIsAuthenticated, setCurrentUser } = useAuth();
   const history = useHistory();
@@ -16,7 +16,7 @@ export function Register() {
       .then(response => {
         setIsAuthenticated(false);
         setCurrentUser(response.data);
-        history.push("/login");
+        history.push('/login');
       })
       .catch(error => {
         console.log(error);
@@ -25,103 +25,103 @@ export function Register() {
 
   return (
     <React.Fragment>
-      <main className="centered-container">
+      <main className='centered-container'>
         <h3>Create your account</h3>
         <form onSubmit={handleSubmit(handleRegister)} noValidate>
           <div
             className={`form-control ${
-              errors.name ? "ko" : formState.touched.name && "ok"
+              errors.name ? 'ko' : formState.touched.name && 'ok'
             }`}
           >
             <label>Name</label>
             <input
               ref={register({
-                required: "The name is mandatory"
+                required: 'The name is mandatory'
               })}
-              name="name"
-              type="text"
-              placeholder="Please enter your name"
+              name='name'
+              type='text'
+              placeholder='Please enter your name'
             ></input>
             {errors.name && (
-              <span className="errorMessage">{errors.name.message}</span>
+              <span className='errorMessage'>{errors.name.message}</span>
             )}
           </div>
           <div
             className={`form-control ${
-              errors.email ? "ko" : formState.touched.email && "ok"
+              errors.email ? 'ko' : formState.touched.email && 'ok'
             }`}
           >
             <label>Email</label>
             <input
               ref={register({
-                required: "The email is mandatory",
+                required: 'The email is mandatory',
                 pattern: {
-                  message: "The email is not valid",
+                  message: 'The email is not valid',
                   value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                 }
               })}
-              name="email"
-              type="email"
-              placeholder="Please enter your email"
+              name='email'
+              type='email'
+              placeholder='Please enter your email'
             ></input>
             {errors.email && (
-              <span className="errorMessage">{errors.email.message}</span>
+              <span className='errorMessage'>{errors.email.message}</span>
             )}
           </div>
           <div
             className={`form-control ${
-              errors.password ? "ko" : formState.touched.password && "ok"
+              errors.password ? 'ko' : formState.touched.password && 'ok'
             }`}
           >
             <label>Password</label>
             <input
               ref={register({
-                required: "The password is mandatory",
+                required: 'The password is mandatory',
                 minLength: {
-                  message: "Password length should be greater than 6",
+                  message: 'Password length should be greater than 6',
                   value: 6
                 }
               })}
-              name="password"
-              type="password"
-              placeholder="Please enter your password"
+              name='password'
+              type='password'
+              placeholder='Please enter your password'
             ></input>
             {errors.password && (
-              <span className="errorMessage">{errors.password.message}</span>
+              <span className='errorMessage'>{errors.password.message}</span>
             )}
           </div>
           <div
             className={`form-control ${
-              errors.password ? "ko" : formState.touched.password && "ok"
+              errors.password ? 'ko' : formState.touched.password && 'ok'
             }`}
           >
-            <label>Confirm your password</label>
+            <label>Confirm password</label>
             <input
               ref={register({
-                required: "The password is mandatory",
+                required: 'The password is mandatory',
                 minLength: {
-                  message: "Password length should be greater than 6",
+                  message: 'Password length should be greater than 6',
                   value: 6
                 }
               })}
-              name="password"
-              type="password"
-              placeholder="Please confirm your password"
+              name='password'
+              type='password'
+              placeholder='Please confirm your password'
             ></input>
             {errors.password && (
-              <span className="errorMessage">{errors.password.message}</span>
+              <span className='errorMessage'>{errors.password.message}</span>
             )}
           </div>
-          <div className="btn-container">
+          <div className='btn-container'>
             <button
-              type="submit"
-              className="btn"
+              type='submit'
+              className='btn'
               disabled={formState.isSubmitting}
             >
               Register
             </button>
-            <div className="m-t-lg">
-              <Link className="m-t-lg" to="/login">
+            <div className='m-t-lg'>
+              <Link className='m-t-lg' to='/login'>
                 Already have an account
               </Link>
             </div>

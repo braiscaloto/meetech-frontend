@@ -5,6 +5,14 @@
   justify-content: center;
   height: 100%;
 }
+.centered-container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-image: url('../images/pngocean.com.png');
+}
 
 .opacity-container {
   transition: opacity 0.3s ease-in;
