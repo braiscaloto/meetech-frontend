@@ -15,7 +15,7 @@ function formatDate(date) {
 }
 function formatTime(string) {
   const time = new Date(string);
-  const hour = "Hora: " + time.getHours() + " " + time.getMinutes();
+  const hour = " Hora: " + time.getHours() + " " + time.getMinutes() + "0";
   return hour;
 }
 export function Event({
@@ -35,10 +35,11 @@ export function Event({
       <div className="event">
         <div className="event-information">
           <h1>{defaultEvent.title}</h1>
-          <h2>
+          <h4>
             {date}
             {time}
-          </h2>
+          </h4>
+          <h4>{defaultEvent.location}</h4>
         </div>
         <div className="content-event-container">
           <p id="content" className="content">

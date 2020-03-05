@@ -47,7 +47,7 @@ function eventReducer(state, action) {
     case "DELETE_LIKE":
       return {
         ...state,
-        likes: { ...state }
+        likes: [...state]
       };
     default:
       return state;
@@ -99,6 +99,7 @@ export function GetEvent() {
   }, []);
 
   const handleCreateComment = formData => {
+    console.log(formData);
     const dataComment = {
       comment: formData.comment
     };
@@ -135,7 +136,6 @@ export function GetEvent() {
     };
 
     deleteLike(eventId, dataLike).then(response => {
-      console.log(response);
       dispatch({ type: "DELETE_LIKE", currentUser });
       history.push(`/events/${eventId}`);
     });
@@ -161,11 +161,7 @@ export function GetEvent() {
 
       <div className="style-event-form">
         <form onSubmit={handleSubmit(handleCreateComment)} noValidate>
-          <div
-            className={`form-control ${
-              errors.name ? "ko" : formState.touched.name && "ok"
-            }`}
-          >
+          <div>
             <label>Comment</label>
             <input
               ref={register({
@@ -176,8 +172,8 @@ export function GetEvent() {
               type="text"
               placeholder="Please enter your comment"
             ></input>
-            {errors.title && (
-              <span className="errorMessage">{errors.title.message}</span>
+            {errors.comment && (
+              <span className="errorMessage">{errors.comment.message}</span>
             )}
           </div>
 
