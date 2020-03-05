@@ -66,18 +66,6 @@ export default function EditAccount() {
                 })}
               />
             </div>
-
-            <div className='userUpdate'>
-              <label className='labelPassword'>Name</label>
-              <input
-                className='inputPassword'
-                type='name'
-                name='name'
-                ref={register({
-                  required: 'The name is mandatory'
-                })}
-              />
-            </div>
             <div className='userUpdate'>
               <button type='submit' className='updateButton'>
                 Update Changes
