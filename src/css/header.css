@@ -30,7 +30,7 @@
 }
 
 .header-tag {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: var(--font-m);
   text-transform: uppercase;
   font-weight: bold;

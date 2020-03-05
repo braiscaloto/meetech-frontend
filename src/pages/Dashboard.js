@@ -25,18 +25,6 @@ function eventsReducer(state, action) {
         ...state,
         userEvents: action.userEvents
       };
-    case "TOGGLE_EVENT":
-      return {
-        ...state,
-        isEventOpened: !state.isEventOpened,
-        isMenuOpened: false
-      };
-    case "TOGGLE_MENU":
-      return {
-        ...state,
-        isMenuOpened: !state.isMenuOpened,
-        isEventOpened: false
-      };
     default:
       return state;
   }

@@ -40,9 +40,9 @@ function eventReducer(state, action) {
     case "CREATE_COMMENT":
       return { ...state, comments: [...state.comments, ...action.comment] };
     case "CREATE_ATTENDEE":
-      return { ...state, attendee: { ...state.attendee, ...action.attendees } };
+      return { ...state, attendee: { ...state.attendees, ...action.attendee } };
     case "CREATE_LIKE":
-      return { ...state, likes: { ...state.like, ...action.likes } };
+      return { ...state, likes: [...state.likes, ...action.like] };
 
     case "DELETE_LIKE":
       return {
@@ -79,7 +79,6 @@ export function GetEvent() {
       })
     );
     getLikes(eventId).then(response => {
-      console.log(response);
       dispatch({
         type: "GET_LIKES_EVENTS",
         initialLikes: response.data
@@ -92,7 +91,6 @@ export function GetEvent() {
       })
     );
     getComments(eventId).then(response => {
-      console.log(response);
       dispatch({
         type: "GET_COMMENTS_EVENTS",
         initialComments: response.data
@@ -117,8 +115,8 @@ export function GetEvent() {
 
     addLike(eventId, dataLike).then(response => {
       dispatch({ type: "CREATE_LIKE", like: dataLike });
-      window.location.reload();
     });
+    window.location.reload();
   };
 
   const handleCreateAttendee = data => {

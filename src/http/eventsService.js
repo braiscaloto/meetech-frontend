@@ -30,6 +30,7 @@ export function addEvent(event) {
 }
 
 export function updateEvent(event) {
+  console.log(event);
   return axios.put(
     `${process.env.REACT_APP_BACKEND_URL}/api/events/${event.id}`,
     event

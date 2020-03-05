@@ -30,18 +30,6 @@ function eventsReducer(state, action) {
       return { ...state, selectedEvent: action.index };
     case "SEARCH_TEXT_CHANGED":
       return { ...state, searchText: action.text };
-    case "TOGGLE_EVENT":
-      return {
-        ...state,
-        isEventOpened: !state.isEventOpened,
-        isMenuOpened: false
-      };
-    case "TOGGLE_MENU":
-      return {
-        ...state,
-        isMenuOpened: !state.isMenuOpened,
-        isEventOpened: false
-      };
     default:
       return state;
   }
@@ -118,10 +106,6 @@ export function EventsUser() {
             <EventList
               events={filteredEvents}
               selectedIndex={state.selectedEvent}
-              onSelectEvent={index => {
-                dispatch({ type: "SELECT_EVENT", index });
-                dispatch({ type: "TOGGLE_EVENT" });
-              }}
               onDeleteEvent={id => handleDeleteEvent(id)}
             />
           </div>

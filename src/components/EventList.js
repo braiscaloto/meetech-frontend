@@ -31,7 +31,6 @@ export function EventList({ events, onDeleteEvent }) {
                 View more..
               </Link>
               <a
-                className="btn"
                 onClick={e => {
                   e.preventDefault();
                   onDeleteEvent(event.id);

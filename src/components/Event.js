@@ -21,7 +21,6 @@ function formatTime(string) {
 export function Event({
   defaultEvent = {},
   defaultAttendees = {},
-  defaultLikes = {},
   defaultComments = []
 }) {
   console.log(defaultComments);
@@ -62,7 +61,6 @@ export function Event({
               <h3>Attendees...</h3>
               {defaultAttendees.map(attendee => (
                 <li className="attendees-list" key={attendee.id}>
-                  <MiniAvatarContainer src={attendee.avatar_url} />
                   <h3 id="content">{attendee.name}</h3>
                 </li>
               ))}
