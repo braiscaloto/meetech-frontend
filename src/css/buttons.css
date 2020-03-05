@@ -94,3 +94,23 @@
   margin-right: 50px;
   margin-bottom: 30px;
 }
+
+@media (max-width: 600px) {
+  .btn-private {
+    font-family: var(--font-primary);
+    text-align: center;
+    transition: all 0.2s;
+    padding: 10px 20px;
+    font-size: 0.5rem;
+    text-transform: lowercase;
+    color: var(--bright);
+    background: var(--medium);
+    outline: none;
+    cursor: pointer;
+    height: 20px;
+    border-radius: 30px;
+    border: 2px solid;
+    float: right;
+    margin-bottom: 20px;
+  }
+}

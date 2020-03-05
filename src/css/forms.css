@@ -131,3 +131,8 @@ label {
   margin-bottom: -100px;
   margin-top: 50px;
 }
+
+.formAddEvent label {
+  display: flex;
+  align-items: center;
+}

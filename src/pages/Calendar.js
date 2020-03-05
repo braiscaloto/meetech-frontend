@@ -57,11 +57,11 @@ export function Calendar() {
               <h1 className="logo-calendar">meetech</h1>
             </Link>
           </div>
-          <div>
-            <Link to="/register" className="btn">
+          <div className="responsive-btn">
+            <Link to="/register" className="btn-private">
               Sign Up
             </Link>
-            <Link to="/login" className="btn">
+            <Link to="/login" className="btn-private">
               Sign In
             </Link>
           </div>
