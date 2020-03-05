@@ -5,6 +5,7 @@ export function deleteAccount() {
 }
 
 export function updateAccount(formData) {
+  console.log(formData);
   return axios.put(
     `${process.env.REACT_APP_BACKEND_URL}/api/accounts`,
     formData
