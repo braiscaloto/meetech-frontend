@@ -38,7 +38,10 @@ function eventReducer(state, action) {
         comments: action.initialComments
       };
     case "CREATE_COMMENT":
-      return { ...state, comments: [...state.comments, ...action.comment] };
+      return {
+        ...state,
+        comments: [...state.comments, { content: action.comment }]
+      };
     case "CREATE_ATTENDEE":
       return { ...state, attendee: { ...state.attendees, ...action.attendee } };
     case "CREATE_LIKE":
@@ -106,8 +109,8 @@ export function GetEvent() {
 
     addComment(eventId, dataComment).then(response => {
       dispatch({ type: "CREATE_COMMENT", comment: dataComment });
+      window.location.reload();
     });
-    window.location.reload();
   };
   const handleCreateLike = data => {
     const dataLike = {
