@@ -27,9 +27,8 @@ export function FileUpload() {
 
   return (
     <form className='uploadAvatarForm' onSubmit={handleFormSubmit}>
-      <h4>Change your avatar:</h4>
-      <input type='file' onChange={handleChange} />
-      <button type='submit' className='primary'>
+      <input type='file' className='avatar-input' onChange={handleChange} />
+      <button type='submit' className='button-avatar-update'>
         Update
       </button>
     </form>
