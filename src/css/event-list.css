@@ -12,3 +12,48 @@
   color: var(--bright);
   margin-bottom: 20px;
 }
+
+@media (max-width: 750px) {
+  .ul-events {
+    padding: 10px;
+    margin: 10px;
+    width: auto;
+    display: flex;
+  }
+  .event-list-user {
+    background: var(--medium);
+
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 160px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-list-user h3 {
+    font-size: var(--font-m);
+    color: var(--bright);
+    margin-bottom: 0px;
+    margin-top: 20px;
+    padding: 0px;
+  }
+  .event-list-user p {
+    font-size: var(--font-m);
+    color: var(--bright);
+    margin: 0px;
+    padding: 50px;
+  }
+  .header-calendar-events {
+    margin-top: 20px;
+  }
+  .header-calendar-events h1 {
+    margin-bottom: 20px;
+  }
+  .event-list input {
+    margin-left: 180px;
+  }
+  .input-search {
+    margin-left: 10px;
+  }
+}

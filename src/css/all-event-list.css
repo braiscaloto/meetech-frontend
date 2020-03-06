@@ -11,3 +11,54 @@
 .all-event-list h3 {
   color: var(--bright);
 }
+
+@media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .btn-private {
+    width: 58%;
+    font-size: var(--font-xs);
+    border-collapse: none;
+  }
+
+  .logo-private {
+    padding: 20px;
+  }
+  .header-calendar-events {
+    padding: 8px;
+    margin-right: 2px;
+    display: flex;
+    flex-direction: column;
+  }
+  .items {
+    display: flex;
+    flex-direction: column;
+  }
+  .all-event-list {
+    padding: 10px;
+    margin: 10px;
+    width: auto;
+    display: block;
+  }
+
+  .ul-events {
+    font-size: var(--font-xs);
+    padding-left: 0px;
+  }
+
+  article h3 {
+    margin-top: 5px;
+    font-size: var(--font-xm);
+  }
+  article p {
+    font-size: var(--font-xs);
+  }
+
+  .btn-event-user {
+    margin-left: 0px;
+    font-size: var(--font-xs);
+    padding: 5px;
+  }
+}

@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
-@import './theme.css';
-@import './buttons.css';
-@import './forms.css';
-@import './utils.css';
-@import './header.css';
-@import './event.css';
-@import './dashboard.css';
-@import './event-list.css';
-@import './dialog.css';
-@import './calendar.css';
-@import './cards.css';
-@import './uploadForm.css';
-@import './profile.css';
-@import './updateAccount.css';
-@import './headboard.css';
-@import './all-event-list.css';
+@import url("https://fonts.googleapis.com/css?family=Righteous&display=swap");
+@import "./theme.css";
+@import "./buttons.css";
+@import "./forms.css";
+@import "./utils.css";
+@import "./header.css";
+@import "./event.css";
+@import "./dashboard.css";
+@import "./event-list.css";
+@import "./dialog.css";
+@import "./calendar.css";
+@import "./cards.css";
+@import "./uploadForm.css";
+@import "./profile.css";
+@import "./updateAccount.css";
+@import "./headboard.css";
+@import "./all-event-list.css";
 
 html {
   box-sizing: border-box;
@@ -32,8 +32,8 @@ html {
 body,
 #root {
   background: var(--bright);
-  background-image: url('../images/pngocean.com.png');
-  font-family: var(--primary);
+  background-image: url("../images/pngocean.com.png");
+  font-family: var(--font-primary);
   height: 100%;
   color: var(--bright);
   line-height: 1.3em;
