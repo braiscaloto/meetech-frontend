@@ -1,12 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export function EventsCards(defaultEvents = {}) {
-  console.log(defaultEvents);
+  const history = useHistory();
+  const handleCard = () => {
+    history.push(`/login`);
+  };
   return (
     <React.Fragment>
       <div className="App">
-        <div className="container">
+        <div
+          className="container"
+          onClick={() => {
+            handleCard();
+          }}
+        >
           <div className="card">
             <h5 className="title">{defaultEvents.defaultEvents[0].title}</h5>
             <div></div>
