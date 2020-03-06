@@ -21,6 +21,7 @@ export function AllEventsList({ events, userEvents }) {
       <input
         type="text"
         placeholder="Search"
+        className="input-search"
         value={searchTerm}
         onChange={handleChange}
       />

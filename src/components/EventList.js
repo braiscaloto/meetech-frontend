@@ -23,20 +23,22 @@ export function EventList({ events, onDeleteEvent }) {
         onChange={handleChange}
       />
       <div>
-        <ul>
+        <ul className="ul-events">
           {searchResults.map((event, index) => (
             <li key={event.id} className="event-list-user">
-              <Link to={`/events/${event.id}`} className="btn-event-user">
-                View more..
-              </Link>
-              <a
-                onClick={e => {
-                  e.preventDefault();
-                  onDeleteEvent(event.id);
-                }}
-              >
-                <button className="icon-button remove"></button>
-              </a>
+              <div className="events-user-btn">
+                <Link to={`/events/${event.id}`} className="btn-event-user">
+                  View more..
+                </Link>
+                <a
+                  onClick={e => {
+                    e.preventDefault();
+                    onDeleteEvent(event.id);
+                  }}
+                >
+                  <button className="icon-button remove"></button>
+                </a>
+              </div>
               <article>
                 <h3>{event.title || "Untitled Event"}</h3>
                 <p>{event.content || "No content"}</p>
